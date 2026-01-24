@@ -1,4 +1,4 @@
-name: Sauce Labs CI
+name: Selenium Pytest CI
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run tests on Sauce Labs
+      - name: Run Pytest
         env:
           SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
           SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
