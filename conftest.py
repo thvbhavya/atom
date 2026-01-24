@@ -8,7 +8,7 @@ def setup():
     sauce_username = os.getenv("SAUCE_USERNAME")
     sauce_access_key = os.getenv("SAUCE_ACCESS_KEY")
 
-    sauce_url = f"https://{sauce_username}:{sauce_access_key}@ondemand.eu-central-1.saucelabs.com:443/wd/hub"
+    sauce_url = f"https://{sauce_username}:{sauce_access_key}@ondemand.us-west-1.saucelabs.com:443/wd/hub"
 
     options = Options()
     options.set_capability("browserName", "chrome")
