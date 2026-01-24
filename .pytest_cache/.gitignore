@@ -1,0 +1,7 @@
+node_modules/
+.env
+.env.*
+reports/
+allure-results/
+allure-report/
+# Created by pytest 
