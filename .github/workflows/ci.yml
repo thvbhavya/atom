@@ -1,4 +1,4 @@
-name: Selenium Pytest CI
+name: Selenium CI
 
 on:
   push:
@@ -17,12 +17,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install selenium pytest
 
-      - name: Run Pytest
-        env:
-          SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
-          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+      - name: Run tests
         run: pytest
-        
