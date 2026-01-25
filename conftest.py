@@ -8,16 +8,21 @@ def setup():
     sauce_username = os.getenv("SAUCE_USERNAME")
     sauce_access_key = os.getenv("SAUCE_ACCESS_KEY")
 
-    sauce_url = f"https://{sauce_username}:{sauce_access_key}@ondemand.us-west-1.saucelabs.com:443/wd/hub"
+    if not sauce_username or not sauce_access_key:
+        raise Exception("Sauce Labs credentials are not set")
+
+    sauce_url = "https://ondemand.us-west-1.saucelabs.com/wd/hub"
 
     options = Options()
     options.set_capability("browserName", "chrome")
     options.set_capability("browserVersion", "latest")
+    options.set_capability("platformName", "Windows 11")
 
     sauce_options = {
+        "username": sauce_username,
+        "accessKey": sauce_access_key,
         "name": "Pytest Login Tests",
-        "build": "GitHub Actions Build",
-        "seleniumVersion": "4.18.1"
+        "build": "GitHub Actions Build"
     }
 
     options.set_capability("sauce:options", sauce_options)
