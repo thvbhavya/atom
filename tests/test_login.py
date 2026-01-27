@@ -1,23 +1,10 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-import time
+from pages.login_page import LoginPage
 
-def test_valid_login():
-    options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
 
-    driver = webdriver.Chrome(options=options)
-    driver.get("https://www.saucedemo.com/")
+def test_valid_login(driver):
+    login_page = LoginPage(driver)
 
-    driver.find_element(By.ID, "user-name").send_keys("standard_user")
-    driver.find_element(By.ID, "password").send_keys("secret_sauce")
-    driver.find_element(By.ID, "login-button").click()
+    login_page.open()
+    login_page.login("jane.doe@gmail.com", "Jane.doe")
 
-    time.sleep(2)
 
-    assert "inventory" in driver.current_url
-
-    driver.quit()

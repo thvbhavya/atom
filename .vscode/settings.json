@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
         "./config/utils"
-    ]
+    ],
+    "diffEditor.useInlineViewWhenSpaceIsLimited": false
 }

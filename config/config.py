@@ -1,9 +1,2 @@
-BASE_URL = "https://www.saucedemo.com/"
+BASE_URL = "https://automationexercise.com/login"
 
-
-VALID_USERNAME = "standard_user"
-VALID_PASSWORD = "secret_sauce"
-
-
-INVALID_USERNAME = "wrong_user"
-INVALID_PASSWORD = "wrong_pass"

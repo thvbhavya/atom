@@ -1,23 +1,40 @@
-name: Selenium CI
+name: Selenium Python Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+    services:
+      selenium-chrome:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: 3.9
 
       - name: Install dependencies
-        run: pip install selenium pytest
+        run: |
+          python -m pip install --upgrade pip
+          pip install selenium pytest
 
       - name: Run tests
-        run: pytest
+        env:
+          DISPLAY: :99
+          # If you use any secrets or env vars, add here
+        run: |
+          pytest tests/
