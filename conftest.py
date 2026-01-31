@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
+from pages.login_page import LoginPage
 
 @pytest.fixture
 def driver():
@@ -16,3 +16,9 @@ def driver():
     yield driver
 
     driver.quit()
+
+def test_valid_login(driver):
+    login_page = LoginPage(driver)
+
+    login_page.open()
+    login_page.login("jane.doe@gmail.com", "Jane.doe")

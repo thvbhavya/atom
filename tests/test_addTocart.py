@@ -3,7 +3,7 @@ from pages.add_to_cart import addTocart
 
 def test_add_to_cart(driver):
 
-    login_page = LoginPage(driver)
+    login_page = LoginPage(driver) #creating object
     cart_page = addTocart(driver)
 
     login_page.open()
